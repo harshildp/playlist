@@ -20,9 +20,6 @@ class SongsController < ApplicationController
     @user = current_user
     @song = Song.find(params[:id])
     @users = @song.users.group('users.id').order('count(adds.user_id) desc')
-    # @song = Song.joins(:users, :adds).group('songs.id').order('count(adds.user_id) desc').where(id:params[:id])
-    # @song = Song.includes(:users, :adds).group('songs.id').order('count(adds.user_id) desc').where(id:params[:id]).references(:users, :adds)
-    # @song = @song.first
   end
 
   private
